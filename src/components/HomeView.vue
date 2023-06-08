@@ -1,6 +1,6 @@
 <script>
-import LoginForm from "../components/LoginForm.vue";
-import Dashboard from "../components/Dashboard.vue";
+import LoginForm from "./LoginForm.vue";
+import Dashboard from "./Dashboard.vue";
 import {mapState} from "pinia";
 import {useSession} from "../stores/session";
 
@@ -8,8 +8,8 @@ export default {
   name: "HomeView",
   components: {Dashboard, LoginForm},
   computed: {
-    ...mapState(useSession, ["LoggedIn"])
-  }
+    ...mapState(useSession, ["loggedIn"])
+  },
 };
 </script>
 <template>
@@ -18,6 +18,3 @@ export default {
     <Dashboard v-else/>
   </main>
 </template>
-
-<style scoped>
-</style>
