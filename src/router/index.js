@@ -3,9 +3,6 @@ import HomeView from "../components/HomeView.vue";
 import LoginForm from "../components/LoginForm.vue";
 import Dashboard from "../components/Dashboard.vue";
 
-import {useSession} from '@/stores/session';
-import {mapState} from "pinia";
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
