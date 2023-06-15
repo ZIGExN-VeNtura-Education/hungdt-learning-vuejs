@@ -1,23 +1,33 @@
-<script>
-import LoginForm from "../components/LoginForm.vue";
-import Dashboard from "../components/Dashboard.vue";
-import {mapState} from "pinia";
-import {useSession} from "../stores/session";
-
-export default {
-  name: "HomeView",
-  components: {Dashboard, LoginForm},
-  computed: {
-    ...mapState(useSession, ["LoggedIn"])
-  }
-};
-</script>
 <template>
-  <main>
-    <LoginForm v-if="LoggedIn"/>
-    <Dashboard v-else/>
-  </main>
+  <div>
+    <h2>Home</h2>
+    <template v-if="isLoggedIn">
+      <UserInfo/>
+    </template>
+    <template v-else>
+      <Login/>
+      <p>Don't have an account?
+        <router-link to="/register">Register</router-link>
+      </p>
+    </template>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<script>
+import UserInfo from './UserInfo.vue';
+import Login from './Login.vue';
+import {useUserStore} from '@/stores/user';
+
+export default {
+  components: {
+    UserInfo,
+    Login,
+  },
+
+  computed: {
+    isLoggedIn() {
+      return useUserStore().user !== null;
+    },
+  },
+};
+</script>
